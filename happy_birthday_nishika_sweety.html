@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hii Nishi 🐼 — Happy Birthday Nishika! 🎂✨</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Fredoka & Quicksand for cute, friendly typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['Fredoka', 'sans-serif'],
+                        body: ['Quicksand', 'sans-serif'],
+                    },
+                    colors: {
+                        pastelYellow: '#FFF8D6',
+                        sunnyYellow: '#FFD93D',
+                        skyPastel: '#E0F4FF',
+                        skyBright: '#4D96FF',
+                        lavenderPastel: '#F3E8FF',
+                        lavenderBright: '#9B5DE5',
+                        peachPastel: '#FFE5D9',
+                        coralBright: '#FF6B6B',
+                        mintPastel: '#E2ECE9',
+                        mintBright: '#6BCB77'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #FFF8D6 0%, #E0F4FF 35%, #F3E8FF 70%, #FFE5D9 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .font-display {
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        /* Animations */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(5deg); }
+        }
+
+        @keyframes floatReverse {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(-6deg); }
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-4deg) scale(1); }
+            50% { transform: rotate(4deg) scale(1.06); }
+        }
+
+        @keyframes bounceSoft {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-7px); }
+        }
+
+        @keyframes flicker {
+            0%, 100% { transform: scaleY(1) scaleX(1); opacity: 1; }
+            50% { transform: scaleY(1.2) scaleX(0.88); opacity: 0.85; }
+        }
+
+        @keyframes smokeRise {
+            0% { opacity: 0.85; transform: translateY(0) scale(0.6); }
+            100% { opacity: 0; transform: translateY(-35px) scale(1.8); }
+        }
+
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.84) translateY(18px); }
+            70% { opacity: 1; transform: scale(1.02) translateY(-2px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        @keyframes albumFlip {
+            0% { opacity: 0.25; transform: perspective(900px) rotateY(-16deg) scale(0.95); }
+            100% { opacity: 1; transform: perspective(900px) rotateY(0deg) scale(1); }
+        }
+
+        .animate-float-slow { animation: floatSlow 4s ease-in-out infinite; }
+        .animate-float-reverse { animation: floatReverse 4.5s ease-in-out infinite; }
+        .animate-wiggle { animation: wiggle 2.5s ease-in-out infinite; }
+        .animate-bounce-soft { animation: bounceSoft 2.2s ease-in-out infinite; }
+        .animate-pop-in { animation: popIn 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+        .animate-album-flip { animation: albumFlip 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+
+        .candle-flame {
+            transform-origin: bottom center;
+            animation: flicker 0.55s ease-in-out infinite;
+        }
+
+        .smoke-puff {
+            animation: smokeRise 1.3s ease-out forwards;
+        }
+
+        /* Sticker styling */
+        .sticker-badge {
+            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.14));
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            user-select: none;
+        }
+        .sticker-badge:hover {
+            transform: scale(1.12) rotate(5deg);
+        }
+
+        /* Stage visibility transitions */
+        .stage-panel {
+            display: none;
+            opacity: 0;
+        }
+        .stage-panel.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* Lights Off Overlay for Stage 2 Cake Blowing */
+        #lights-overlay {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(15, 23, 42, 0.95) 0%, rgba(2, 6, 23, 0.99) 100%);
+            z-index: 45;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease-in-out;
+        }
+        #lights-overlay.dark {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Fullscreen Fireworks & Confetti Canvas */
+        #fx-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        /* Photo frame backdrop so uncropped photos look gorgeous */
+        .photo-stage-box {
+            background: radial-gradient(circle at center, #FFF8D6 0%, #F3E8FF 65%, #E0F4FF 100%);
+        }
+
+        /* Animated Music Equalizer Bars */
+        @keyframes eqDance {
+            0%, 100% { height: 4px; }
+            50% { height: 14px; }
+        }
+        .eq-bar {
+            width: 3px;
+            border-radius: 9999px;
+            background-color: #9B5DE5;
+            transition: height 0.2s ease;
+        }
+        .eq-playing .eq-bar:nth-child(1) { animation: eqDance 0.6s ease-in-out infinite; }
+        .eq-playing .eq-bar:nth-child(2) { animation: eqDance 0.45s ease-in-out infinite 0.15s; }
+        .eq-playing .eq-bar:nth-child(3) { animation: eqDance 0.7s ease-in-out infinite 0.3s; }
+        .eq-paused .eq-bar { height: 4px !important; animation: none !important; background-color: #94a3b8; }
+    </style>
+</head>
+<body class="text-slate-800 antialiased selection:bg-sunnyYellow selection:text-slate-900 flex flex-col justify-between">
+
+    <!-- Fullscreen Fireworks & Confetti Canvas -->
+    <canvas id="fx-canvas"></canvas>
+
+    <!-- Lights Off Overlay for Dramatic Cake Candle Blowout -->
+    <div id="lights-overlay" class="flex flex-col items-center justify-center text-center px-6">
+        <div class="text-6xl animate-bounce mb-4">🕯️💨</div>
+        <p class="font-display text-2xl sm:text-4xl font-bold text-sunnyYellow tracking-wide animate-pulse">
+            Make a wish, Nishi 🐼...
+        </p>
+        <p class="text-slate-300 font-semibold mt-2 text-sm sm:text-base">3... 2... 1... ✨</p>
+    </div>
+
+    <!-- Top Floating Controls Bar -->
+    <header class="sticky top-0 z-40 w-full px-4 pt-3 pb-2">
+        <div class="max-w-4xl mx-auto bg-white/85 backdrop-blur-md border-2 border-white shadow-md rounded-full px-4 py-2 flex items-center justify-between gap-2">
+            <!-- Brand / Friend Badge -->
+            <button type="button" onclick="goToStage(1)" class="flex items-center gap-2 font-display font-bold text-base sm:text-lg text-lavenderBright hover:scale-105 transition cursor-pointer">
+                <span class="text-2xl animate-wiggle inline-block">🐼</span>
+                <span>Nishi's Birthday</span>
+            </button>
+
+            <!-- Step Dots Indicator -->
+            <div class="flex items-center gap-1.5 sm:gap-2" aria-label="Celebration Steps">
+                <button type="button" onclick="goToStage(1)" id="dot-1" class="w-7 h-7 rounded-full font-display font-bold text-xs bg-sunnyYellow text-slate-900 shadow-sm transition cursor-pointer">1</button>
+                <span class="text-slate-300 text-xs">―</span>
+                <button type="button" onclick="goToStage(2)" id="dot-2" class="w-7 h-7 rounded-full font-display font-bold text-xs bg-slate-100 text-slate-500 transition cursor-pointer">2</button>
+                <span class="text-slate-300 text-xs">―</span>
+                <button type="button" onclick="goToStage(3)" id="dot-3" class="w-7 h-7 rounded-full font-display font-bold text-xs bg-slate-100 text-slate-500 transition cursor-pointer">3</button>
+                <span class="text-slate-300 text-xs">―</span>
+                <button type="button" onclick="goToStage(4)" id="dot-4" class="w-7 h-7 rounded-full font-display font-bold text-xs bg-slate-100 text-slate-500 transition cursor-pointer">4</button>
+            </div>
+
+            <!-- Background Birthday Music Toggle Pill -->
+            <button type="button" id="music-toggle-btn" onclick="toggleBdayMusic()" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-lavenderPastel hover:bg-purple-200/80 border border-purple-200 text-xs sm:text-sm font-display font-semibold text-lavenderBright shadow-sm transition cursor-pointer" title="Toggle Background Birthday Song">
+                <span id="eq-bars" class="flex items-end gap-0.5 h-3.5 eq-paused" aria-hidden="true">
+                    <span class="eq-bar"></span>
+                    <span class="eq-bar"></span>
+                    <span class="eq-bar"></span>
+                </span>
+                <span id="music-btn-label">🔇 Music: OFF</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN INTERACTIVE CONTAINER -->
+    <main class="flex-grow flex items-center justify-center px-4 py-6 sm:py-10 relative">
+
+        <!-- Decorative Floating Background Stickers -->
+        <div class="hidden sm:block fixed top-24 left-6 text-4xl sticker-badge animate-float-slow pointer-events-none">🐼</div>
+        <div class="hidden sm:block fixed top-28 right-8 text-4xl sticker-badge animate-float-reverse pointer-events-none">🎈</div>
+        <div class="hidden md:block fixed bottom-16 left-10 text-4xl sticker-badge animate-wiggle pointer-events-none">🎁</div>
+        <div class="hidden md:block fixed bottom-20 right-10 text-4xl sticker-badge animate-bounce-soft pointer-events-none">⭐</div>
+
+        <!-- ========================================================= -->
+        <!-- STAGE 1: WELCOME & GIFT SCREEN                            -->
+        <!-- ========================================================= -->
+        <section id="stage-1" class="stage-panel active flex-col items-center justify-center w-full max-w-xl mx-auto text-center animate-pop-in">
+            <div class="bg-white/90 backdrop-blur-md border-4 border-white rounded-[2.5rem] p-6 sm:p-9 shadow-2xl w-full relative">
+                
+                <!-- Top Corner Panda & Gift Stickers -->
+                <div class="absolute -top-6 -left-3 text-5xl sticker-badge animate-wiggle">🐼</div>
+                <div class="absolute -top-6 -right-3 text-5xl sticker-badge animate-bounce-soft">🎁</div>
+
+                <!-- School Friend Tag -->
+                <div class="inline-flex items-center gap-1.5 bg-pastelYellow border border-amber-300 px-3.5 py-1 rounded-full text-xs font-bold text-amber-700 mb-3">
+                    <span>🎒</span>
+                    <span>Best School Friend Special</span>
+                    <span>✨</span>
+                </div>
+
+                <!-- Top Heading -->
+                <h1 class="font-display text-3xl sm:text-5xl font-bold text-slate-800 leading-tight">
+                    Hii Nishi, <br class="sm:hidden">
+                    <span class="bg-gradient-to-r from-skyBright via-lavenderBright to-coralBright bg-clip-text text-transparent">
+                        Gift for you! 🐼🎁
+                    </span>
+                </h1>
+
+                <!-- Center Framed Cute Photo -->
+                <div class="my-6 relative mx-auto max-w-xs sm:max-w-sm">
+                    <div class="p-3 bg-gradient-to-tr from-sunnyYellow via-skyPastel to-lavenderPastel rounded-3xl shadow-lg border-4 border-white transform -rotate-1 hover:rotate-0 transition duration-300">
+                        <div class="photo-stage-box rounded-2xl overflow-hidden flex items-center justify-center aspect-[4/5] max-h-[360px] mx-auto">
+                            <img 
+                                src="https://i.ibb.co/8HgD0n6/Snapchat-1392987884.jpg" 
+                                alt="Hii Nishi Gift For You" 
+                                class="w-full h-full object-contain rounded-xl"
+                                onerror="this.src='https://placehold.co/400x500/FFF8D6/4D96FF?text=Hii+Nishi+%F0%9F%90%BC'"
+                            >
+                        </div>
+                        <div class="mt-2.5 flex items-center justify-center gap-2 font-display font-bold text-slate-700 text-base">
+                            <span>🐼</span>
+                            <span>Sweety / Nishi</span>
+                            <span>🌟</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Glowing Interactive Surprise Button -->
+                <button type="button" onclick="openSurprise()" class="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-sunnyYellow via-amber-300 to-coralBright text-slate-900 font-display font-bold text-xl sm:text-2xl rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3 mx-auto border-4 border-white cursor-pointer animate-bounce-soft">
+                    <span>Surprise ✨</span>
+                </button>
+                <p class="text-xs font-bold text-slate-400 mt-3">Tap "Surprise ✨" to open your birthday celebration!</p>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- STAGE 2: CAKE, CANDLE BLOW, DARKNESS & FIREWORKS REVEAL   -->
+        <!-- ========================================================= -->
+        <section id="stage-2" class="stage-panel flex-col items-center justify-center w-full max-w-2xl mx-auto text-center">
+            <div class="bg-white/92 backdrop-blur-md border-4 border-white rounded-[2.5rem] p-6 sm:p-9 shadow-2xl w-full relative">
+                
+                <!-- PHASE A: Interactive Cake Before Blowing Candles -->
+                <div id="cake-phase" class="flex flex-col items-center">
+                    <span class="inline-block bg-lavenderPastel text-lavenderBright font-bold text-xs px-4 py-1 rounded-full mb-2">
+                        BIRTHDAY CAKE TIME 🎂🕯️
+                    </span>
+                    <h2 class="font-display text-2xl sm:text-4xl font-bold text-slate-800">
+                        Candles par click karke blow karo! 🎂🕯️
+                    </h2>
+                    <p class="text-slate-500 font-semibold text-sm sm:text-base mt-1">
+                        Pehle ek pyaari si wish maango Nishi 🐼, phir cake par tap karo!
+                    </p>
+
+                    <!-- Interactive Clickable SVG Cake -->
+                    <div onclick="blowCandlesSequence()" role="button" tabindex="0" aria-label="Click cake to blow out candles" class="my-6 w-64 sm:w-80 cursor-pointer group transform hover:scale-105 active:scale-95 transition duration-300 select-none">
+                        <svg viewBox="0 0 280 235" class="w-full h-full drop-shadow-xl">
+                            <!-- Soft Glow behind candles -->
+                            <circle id="candle-aura" cx="140" cy="55" r="55" fill="#FFD93D" opacity="0.28" class="animate-pulse"/>
+
+                            <!-- Cake Stand -->
+                            <ellipse cx="140" cy="212" rx="112" ry="14" fill="#CBD5E1"/>
+                            <rect x="124" y="194" width="32" height="18" fill="#94A3B8"/>
+                            <ellipse cx="140" cy="194" rx="102" ry="12" fill="#F8FAFC"/>
+
+                            <!-- Bottom Cake Layer -->
+                            <rect x="52" y="140" width="176" height="54" rx="18" fill="#FF9F1C"/>
+                            <path d="M52 153 Q70 168 88 153 T124 153 T160 153 T196 153 T228 153 L228 140 L52 140 Z" fill="#FFF8D6"/>
+                            <!-- Colorful Sprinkles -->
+                            <circle cx="80" cy="174" r="3.5" fill="#4D96FF"/>
+                            <circle cx="110" cy="179" r="3.5" fill="#FFFFFF"/>
+                            <circle cx="140" cy="173" r="3.5" fill="#9B5DE5"/>
+                            <circle cx="170" cy="178" r="3.5" fill="#6BCB77"/>
+                            <circle cx="200" cy="173" r="3.5" fill="#FF6B6B"/>
+
+                            <!-- Top Cake Layer -->
+                            <rect x="78" y="90" width="124" height="52" rx="15" fill="#4D96FF"/>
+                            <path d="M78 103 Q93 116 108 103 T138 103 T168 103 T202 103 L202 90 L78 90 Z" fill="#FFFFFF"/>
+                            <text x="140" y="129" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="bold" font-size="15" fill="#FFFFFF">NISHI 🐼</text>
+
+                            <!-- Candle 1 (Left) -->
+                            <rect x="102" y="56" width="10" height="34" rx="4" fill="#FF6B6B"/>
+                            <g id="flame-group-1" class="candle-flame">
+                                <path d="M107 30 C115 43 115 54 107 55 C99 54 99 43 107 30 Z" fill="#FFD93D"/>
+                                <path d="M107 39 C111 45 111 52 107 53 C103 52 103 45 107 39 Z" fill="#FF6B6B"/>
+                            </g>
+                            <g id="smoke-1" class="hidden">
+                                <circle cx="107" cy="46" r="5" fill="#CBD5E1"/>
+                                <circle cx="111" cy="38" r="4" fill="#E2E8F0"/>
+                            </g>
+
+                            <!-- Candle 2 (Center) -->
+                            <rect x="135" y="50" width="10" height="40" rx="4" fill="#9B5DE5"/>
+                            <g id="flame-group-2" class="candle-flame">
+                                <path d="M140 24 C148 37 148 48 140 49 C132 48 132 37 140 24 Z" fill="#FFD93D"/>
+                                <path d="M140 33 C144 39 144 46 140 47 C136 46 136 39 140 33 Z" fill="#FF6B6B"/>
+                            </g>
+                            <g id="smoke-2" class="hidden">
+                                <circle cx="140" cy="40" r="5" fill="#CBD5E1"/>
+                                <circle cx="136" cy="31" r="4" fill="#E2E8F0"/>
+                            </g>
+
+                            <!-- Candle 3 (Right) -->
+                            <rect x="168" y="56" width="10" height="34" rx="4" fill="#6BCB77"/>
+                            <g id="flame-group-3" class="candle-flame">
+                                <path d="M173 30 C181 43 181 54 173 55 C165 54 165 43 173 30 Z" fill="#FFD93D"/>
+                                <path d="M173 39 C177 45 177 52 173 53 C169 52 169 45 173 39 Z" fill="#FF6B6B"/>
+                            </g>
+                            <g id="smoke-3" class="hidden">
+                                <circle cx="173" cy="46" r="5" fill="#CBD5E1"/>
+                                <circle cx="177" cy="38" r="4" fill="#E2E8F0"/>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <button type="button" onclick="blowCandlesSequence()" class="px-7 py-3.5 bg-gradient-to-r from-coralBright to-amber-500 text-white font-display font-bold text-lg rounded-2xl shadow-lg hover:scale-105 active:scale-95 transition flex items-center gap-2 cursor-pointer">
+                        <span>🌬️ Blow Out Candles!</span>
+                    </button>
+                </div>
+
+                <!-- PHASE B: Fireworks & Happy Birthday Nishika Reveal (Hidden until candles blown) -->
+                <div id="birthday-reveal-phase" class="hidden flex-col items-center animate-pop-in">
+                    
+                    <!-- Cute Sticker Row -->
+                    <div class="flex items-center justify-center gap-3 text-3xl sm:text-4xl mb-2">
+                        <span class="sticker-badge animate-bounce">🎉</span>
+                        <span class="sticker-badge animate-wiggle">🐼</span>
+                        <span class="sticker-badge animate-bounce">🎆</span>
+                        <span class="sticker-badge animate-wiggle">🎂</span>
+                        <span class="sticker-badge animate-bounce">🥳</span>
+                    </div>
+
+                    <!-- Big Celebration Banner -->
+                    <h2 class="font-display text-3xl sm:text-5xl font-bold bg-gradient-to-r from-coralBright via-lavenderBright to-skyBright bg-clip-text text-transparent leading-tight">
+                        Happy Birthday Nishika 🐼
+                    </h2>
+                    <p class="text-slate-600 font-bold text-sm sm:text-base mt-1">
+                        Sweety ke liye dher saari khushiyan aur celebration! ✨🎊
+                    </p>
+
+                    <!-- Stage 2 Special Photo (Full uncropped view) -->
+                    <div class="my-5 mx-auto max-w-xs sm:max-w-sm w-full">
+                        <div class="p-3 bg-gradient-to-br from-sunnyYellow via-peachPastel to-skyPastel rounded-3xl shadow-xl border-4 border-white">
+                            <div class="photo-stage-box rounded-2xl overflow-hidden flex items-center justify-center aspect-[4/5] max-h-[340px] mx-auto">
+                                <img 
+                                    src="https://i.ibb.co/WpHtJvLM/Snapchat-1993109763.jpg" 
+                                    alt="Happy Birthday Nishika" 
+                                    class="w-full h-full object-contain rounded-xl"
+                                    onerror="this.src='https://placehold.co/400x500/E0F4FF/9B5DE5?text=Happy+Birthday+Nishika+%F0%9F%90%BC'"
+                                >
+                            </div>
+                            <div class="mt-2 font-display font-bold text-slate-700 text-sm sm:text-base">
+                                🌟 Birthday Star: Nishi (Sweety) 🐼 🌟
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons: Extra Fireworks + Next Stage Button -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-3 w-full mt-2">
+                        <button type="button" onclick="launchFireworksShow(6)" class="w-full sm:w-auto px-5 py-3 bg-pastelYellow hover:bg-amber-200 text-amber-800 border-2 border-amber-300 font-display font-bold text-base rounded-2xl shadow-sm hover:scale-105 transition cursor-pointer">
+                            🎆 More Pathake!
+                        </button>
+                        <button type="button" onclick="goToStage(3)" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-skyBright via-lavenderBright to-coralBright text-white font-display font-bold text-lg sm:text-xl rounded-2xl shadow-xl hover:scale-105 active:scale-95 transition flex items-center justify-center gap-2 border-2 border-white cursor-pointer animate-bounce-soft">
+                            <span>Abhi to aage bhi hai... 👉</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- STAGE 3: CLICKABLE PHOTO ALBUM (8 PHOTOS)                 -->
+        <!-- ========================================================= -->
+        <section id="stage-3" class="stage-panel flex-col items-center justify-center w-full max-w-2xl mx-auto text-center">
+            <div class="bg-white/92 backdrop-blur-md border-4 border-white rounded-[2.5rem] p-5 sm:p-8 shadow-2xl w-full relative">
+                
+                <!-- Corner Stickers -->
+                <div class="absolute -top-5 -left-3 text-4xl sticker-badge animate-wiggle">📸</div>
+                <div class="absolute -top-5 -right-3 text-4xl sticker-badge animate-float-slow">🐼</div>
+
+                <span class="inline-block bg-skyPastel text-skyBright font-bold text-xs px-4 py-1 rounded-full mb-1">
+                    NISHI'S MEMORY ALBUM 📷✨
+                </span>
+                <h2 class="font-display text-2xl sm:text-4xl font-bold text-slate-800">
+                    Sweety's Cute Photo Album 🐼
+                </h2>
+                <p class="text-slate-500 font-semibold text-xs sm:text-sm mt-1">
+                    Photo par click/tap karo agli photo dekhne ke liye! 👆📖
+                </p>
+
+                <!-- Clickable Interactive Album Frame -->
+                <div id="album-card" onclick="nextAlbumPhoto()" role="button" tabindex="0" aria-label="Click to view next photo" class="my-5 mx-auto max-w-sm sm:max-w-md cursor-pointer select-none group">
+                    <div class="p-3 sm:p-4 bg-gradient-to-tr from-lavenderPastel via-pastelYellow to-skyPastel rounded-3xl shadow-xl border-4 border-white transition group-hover:shadow-2xl">
+                        <!-- Top Album Bar -->
+                        <div class="flex items-center justify-between px-2 pb-2 text-xs font-bold text-slate-500">
+                            <span id="album-counter" class="bg-white/90 px-3 py-1 rounded-full text-lavenderBright shadow-xs">Photo 1 of 8</span>
+                            <span class="bg-white/90 px-3 py-1 rounded-full text-skyBright shadow-xs">Tap photo to flip 👉</span>
+                        </div>
+
+                        <!-- Photo Display Container (object-contain so nothing crops) -->
+                        <div class="photo-stage-box rounded-2xl overflow-hidden flex items-center justify-center aspect-[4/5] max-h-[380px] mx-auto relative">
+                            <img 
+                                id="album-img" 
+                                src="https://i.ibb.co/LDwg0kCx/sweety-mali-15-20261114-230613564.jpg" 
+                                alt="Nishi Album Photo" 
+                                class="w-full h-full object-contain rounded-xl transition-opacity duration-300"
+                                onerror="this.src='https://placehold.co/400x500/F3E8FF/9B5DE5?text=Nishi+Photo+%F0%9F%90%BC'"
+                            >
+                        </div>
+
+                        <!-- Cute Friendship Caption -->
+                        <div class="mt-3 bg-white/90 rounded-2xl px-4 py-2.5 shadow-xs">
+                            <p id="album-caption" class="font-display font-semibold text-slate-700 text-sm sm:text-base">
+                                Always smiling & shining bright, Nishi! 🐼✨
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Album Controls (Prev / Dots / Next) -->
+                <div class="flex items-center justify-center gap-3 mb-6">
+                    <button type="button" onclick="prevAlbumPhoto()" class="px-4 py-2 bg-slate-100 hover:bg-skyPastel text-slate-700 font-display font-bold text-sm rounded-xl transition cursor-pointer">
+                        ◀ Prev
+                    </button>
+                    <div id="album-dots" class="flex items-center gap-1.5 flex-wrap justify-center"></div>
+                    <button type="button" onclick="nextAlbumPhoto()" class="px-4 py-2 bg-slate-100 hover:bg-skyPastel text-slate-700 font-display font-bold text-sm rounded-xl transition cursor-pointer">
+                        Next ▶
+                    </button>
+                </div>
+
+                <!-- Next Stage Button to 10 Wishes -->
+                <button type="button" onclick="goToStage(4)" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-mintBright via-skyBright to-lavenderBright text-white font-display font-bold text-lg sm:text-xl rounded-2xl shadow-xl hover:scale-105 active:scale-95 transition flex items-center justify-center gap-2 mx-auto border-2 border-white cursor-pointer">
+                    <span>Next: 10 Special Wishes 🐼✨</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- STAGE 4: 10 SPECIAL WISHES (STUDIES, FUTURE & HEALTH)     -->
+        <!-- ========================================================= -->
+        <section id="stage-4" class="stage-panel flex-col items-center justify-center w-full max-w-4xl mx-auto">
+            <div class="bg-white/92 backdrop-blur-md border-4 border-white rounded-[2.5rem] p-6 sm:p-10 shadow-2xl w-full relative">
+                
+                <!-- Top Decorative Stickers -->
+                <div class="flex items-center justify-center gap-3 text-3xl sm:text-4xl mb-3">
+                    <span class="sticker-badge animate-wiggle">🐼</span>
+                    <span class="sticker-badge animate-bounce-soft">📚</span>
+                    <span class="sticker-badge animate-float-slow">🎓</span>
+                    <span class="sticker-badge animate-bounce-soft">💪</span>
+                    <span class="sticker-badge animate-wiggle">🌟</span>
+                </div>
+
+                <div class="text-center max-w-2xl mx-auto mb-7">
+                    <span class="inline-block bg-mintPastel text-emerald-700 font-bold text-xs px-4 py-1 rounded-full mb-2">
+                        10 SPECIAL BIRTHDAY WISHES FOR NISHI 🐼
+                    </span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-slate-800">
+                        Padhai, Bright Future & Good Health ke Liye 10 Wishes! ✨
+                    </h2>
+                    <p class="text-slate-500 font-semibold text-sm sm:text-base mt-1.5">
+                        Ek achhe school friend ki taraf se Nishika (Sweety) ke liye dil se 10 best wishes:
+                    </p>
+                </div>
+
+                <!-- 10 Wishes Grid -->
+                <div id="wishes-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+
+                <!-- Final Friendship Card & Celebration Controls -->
+                <div class="mt-8 bg-gradient-to-r from-pastelYellow via-skyPastel to-lavenderPastel border-2 border-white rounded-3xl p-6 text-center shadow-md">
+                    <div class="text-4xl mb-2">🐼🎂🎈</div>
+                    <h3 class="font-display text-2xl font-bold text-slate-800">
+                        Happy Birthday Once Again, Nishi (Sweety)! 🎉
+                    </h3>
+                    <p class="text-slate-600 font-semibold text-sm sm:text-base max-w-xl mx-auto mt-1">
+                        School ki yeh dosti aur tumhari pyari si muskurahat hamesha aise hi bani rahe. Keep shining and stay healthy! 🌟
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mt-5">
+                        <button type="button" onclick="launchFireworksShow(8)" class="w-full sm:w-auto px-6 py-3 bg-sunnyYellow hover:bg-amber-300 text-slate-900 font-display font-bold text-base rounded-2xl shadow-md hover:scale-105 transition cursor-pointer">
+                            🎆 Celebrate with Fireworks!
+                        </button>
+                        <button type="button" onclick="goToStage(1)" class="w-full sm:w-auto px-6 py-3 bg-white hover:bg-slate-50 text-lavenderBright border-2 border-lavenderPastel font-display font-bold text-base rounded-2xl shadow-sm hover:scale-105 transition cursor-pointer">
+                            🔄 Start From Beginning
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Simple Footer -->
+    <footer class="text-center py-4 px-4 text-xs font-bold text-slate-500">
+        Made with pure school friendship vibes for Nishika (Nishi 🐼 / Sweety) ✨🎂
+    </footer>
+
+    <!-- ========================================================= -->
+    <!-- JAVASCRIPT: AUDIO ENGINE, STAGE FLOW, FIREWORKS & ALBUM   -->
+    <!-- ========================================================= -->
+    <script>
+        // ==========================================
+        // 1. DATA: 8 ALBUM PHOTOS & 10 WISHES
+        // ==========================================
+        const albumPhotos = [
+            {
+                url: "https://i.ibb.co/LDwg0kCx/sweety-mali-15-20261114-230613564.jpg",
+                caption: "Always smiling & shining bright, Nishi! 🐼✨"
+            },
+            {
+                url: "https://i.ibb.co/d4VMZ1XC/sweety-mali-15-20261114-230559692.jpg",
+                caption: "School days ki sabse best dost — Sweety! 🎒🌟"
+            },
+            {
+                url: "https://i.ibb.co/YKrYGKp/sweety-mali-15-20261114-230524101.jpg",
+                caption: "Cute panda vibes & positive energy! 🐼🎈"
+            },
+            {
+                url: "https://i.ibb.co/DDwQ7Z8D/sweety-mali-15-20261114-230510335.jpg",
+                caption: "Hamesha aise hi khush aur confident raho! 💫🎉"
+            },
+            {
+                url: "https://i.ibb.co/W4260q8s/sweety-mali-15-20261114-230224460.jpg",
+                caption: "Happy Birthday to the coolest friend, Nishika! 🎂🥳"
+            },
+            {
+                url: "https://i.ibb.co/ycMLv0Xr/sweety-mali-15-20261114-230202516.jpg",
+                caption: "Har picture mein ek nayi chamak aur smile! 📸🌈"
+            },
+            {
+                url: "https://i.ibb.co/1JYND7M7/sweety-mali-15-20261114-230117683.jpg",
+                caption: "Best wishes for your studies & big dreams! 📚🚀"
+            },
+            {
+                url: "https://i.ibb.co/YBVKZXQ7/Screenshot-2026-11-14-23-00-44-550-com-instapro-android-edit.jpg",
+                caption: "Stay awesome forever, Nishi 🐼! 🎁✨"
+            }
+        ];
+
+        const tenWishes = [
+            {
+                num: "01",
+                icon: "📚",
+                title: "Padhai Mein Super Success",
+                text: "Nishi 🐼, tumhari padhai mein hamesha sharp focus aur clarity rahe—har exam aur har test mein tum shaandaar perform karo!",
+                bg: "bg-pastelYellow border-amber-200"
+            },
+            {
+                num: "02",
+                icon: "🎓",
+                title: "Bright & Golden Future",
+                text: "Aane wale saalon mein tumhe woh har manzil aur career success mile jiske tumne sapne dekhe hain. Sky is the limit, Sweety! 🚀",
+                bg: "bg-skyPastel border-skyBright/30"
+            },
+            {
+                num: "03",
+                icon: "💪",
+                title: "Hamesha Fit & Healthy Raho",
+                text: "Sabse zaroori wish—tumhari health hamesha top-notch rahe, tum kabhi bimaar na pado aur hamesha energy se bhari raho! 🍎✨",
+                bg: "bg-mintPastel border-mintBright/40"
+            },
+            {
+                num: "04",
+                icon: "🐼",
+                title: "Cute Panda Jaisi Muskurahat",
+                text: "Tumhari pyari si smile kabhi kam na ho—chahe koi bhi situation aaye, tum hamesha khush aur tension-free raho, Nishi 🐼!",
+                bg: "bg-lavenderPastel border-lavenderBright/30"
+            },
+            {
+                num: "05",
+                icon: "🏆",
+                title: "Har Goal Mein Jeet",
+                text: "Life ke har competition, project aur challenge mein tumhe jeet mile aur tum apne parents aur doston ka naam roshan karo! 🌟",
+                bg: "bg-peachPastel border-coralBright/30"
+            },
+            {
+                num: "06",
+                icon: "🧠",
+                title: "Confidence & Positive Mindset",
+                text: "Tumhare andar hamesha self-confidence bana rahe—tum jo bhi kaam haath mein lo, use poore bharose ke saath poora karo! 💡",
+                bg: "bg-skyPastel border-skyBright/30"
+            },
+            {
+                num: "07",
+                icon: "🎒",
+                title: "School Friendship Forever",
+                text: "Hamari school ki dosti, class ki masti aur hasi-mazak ki yaadein hamesha aise hi taaza aur special bani rahein! 🤝🎉",
+                bg: "bg-pastelYellow border-amber-200"
+            },
+            {
+                num: "08",
+                icon: "🌈",
+                title: "No Stress, Only Good Vibes",
+                text: "Padhai aur future ki bhaag-daud mein bhi tumhe hamesha peace of mind aur sukoon mile—kabhi kisi baat ki tension na ho! ☁️✨",
+                bg: "bg-lavenderPastel border-lavenderBright/30"
+            },
+            {
+                num: "09",
+                icon: "🚀",
+                title: "Naye Opportunities & Growth",
+                text: "Har naya din tumhare liye naye opportunities, achhe log aur seekhne ke behtareen mauke lekar aaye, Nishika! 🌍",
+                bg: "bg-mintPastel border-mintBright/40"
+            },
+            {
+                num: "10",
+                icon: "🎂",
+                title: "Best Birthday & Best Year Ahead",
+                text: "Yeh saal tumhari life ka ab tak ka sabse khushnuma, healthy aur successful saal sabit ho. Happy Birthday once again, Nishi 🐼! 🥳",
+                bg: "bg-peachPastel border-coralBright/30"
+            }
+        ];
+
+        // ==========================================
+        // 2. WEB AUDIO API: CONTINUOUS BDAY SONG & SFX
+        // ==========================================
+        let audioCtx = null;
+        let isMusicPlaying = false;
+        let musicLoopTimer = null;
+        let noteIndex = 0;
+
+        // Happy Birthday melody in C Major: [frequency in Hz, duration in ms]
+        const bdayNotes = [
+            // "Hap-py Birth-day to you"
+            [261.63, 320], [261.63, 180], [293.66, 500], [261.63, 500], [349.23, 500], [329.63, 950],
+            // "Hap-py Birth-day to you"
+            [261.63, 320], [261.63, 180], [293.66, 500], [261.63, 500], [392.00, 500], [349.23, 950],
+            // "Hap-py Birth-day dear Ni-shi"
+            [261.63, 320], [261.63, 180], [523.25, 500], [440.00, 500], [349.23, 500], [329.63, 500], [293.66, 950],
+            // "Hap-py Birth-day to you!"
+            [466.16, 320], [466.16, 180], [440.00, 500], [349.23, 500], [392.00, 500], [349.23, 1100]
+        ];
+
+        function ensureAudioContext() {
+            if (!audioCtx) {
+                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                if (AudioContextClass) {
+                    audioCtx = new AudioContextClass();
+                }
+            }
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        function playMusicBoxNote(freq, durationMs) {
+            if (!audioCtx || !isMusicPlaying) return;
+            const now = audioCtx.currentTime;
+            const durSec = durationMs / 1000;
+
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, now);
+
+            // Soft music-box envelope
+            gain.gain.setValueAtTime(0.0001, now);
+            gain.gain.exponentialRampToValueAtTime(0.11, now + 0.02);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + durSec * 0.95);
+
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            osc.start(now);
+            osc.stop(now + durSec);
+        }
+
+        function stepBdayMelody() {
+            if (!isMusicPlaying) return;
+            const current = bdayNotes[noteIndex];
+            playMusicBoxNote(current[0], current[1]);
+
+            noteIndex = (noteIndex + 1) % bdayNotes.length;
+            const pauseBetweenLoops = noteIndex === 0 ? 600 : 40;
+            musicLoopTimer = setTimeout(stepBdayMelody, current[1] + pauseBetweenLoops);
+        }
+
+        function updateMusicUI() {
+            const label = document.getElementById('music-btn-label');
+            const eq = document.getElementById('eq-bars');
+            if (!label || !eq) return;
+
+            if (isMusicPlaying) {
+                label.textContent = '🎵 Bday Music: ON';
+                eq.classList.remove('eq-paused');
+                eq.classList.add('eq-playing');
+            } else {
+                label.textContent = '🔇 Music: OFF';
+                eq.classList.remove('eq-playing');
+                eq.classList.add('eq-paused');
+            }
+        }
+
+        function startBdayBackgroundMusic() {
+            try {
+                ensureAudioContext();
+                if (!isMusicPlaying) {
+                    isMusicPlaying = true;
+                    updateMusicUI();
+                    stepBdayMelody();
+                }
+            } catch (e) {}
+        }
+
+        function stopBdayBackgroundMusic() {
+            isMusicPlaying = false;
+            if (musicLoopTimer) {
+                clearTimeout(musicLoopTimer);
+                musicLoopTimer = null;
+            }
+            updateMusicUI();
+        }
+
+        function toggleBdayMusic() {
+            if (isMusicPlaying) {
+                stopBdayBackgroundMusic();
+            } else {
+                startBdayBackgroundMusic();
+            }
+        }
+
+        function playFireworkPop() {
+            try {
+                ensureAudioContext();
+                if (!audioCtx) return;
+                const now = audioCtx.currentTime;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                const notes = [523.25, 659.25, 783.99, 1046.5];
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(notes[Math.floor(Math.random() * notes.length)], now);
+                osc.frequency.exponentialRampToValueAtTime(180, now + 0.16);
+
+                gain.gain.setValueAtTime(0.08, now);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.16);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start(now);
+                osc.stop(now + 0.17);
+            } catch (e) {}
+        }
+
+        function playClickChime() {
+            try {
+                ensureAudioContext();
+                if (!audioCtx) return;
+                const now = audioCtx.currentTime;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(784, now);
+                gain.gain.setValueAtTime(0.06, now);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.12);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start(now);
+                osc.stop(now + 0.13);
+            } catch (e) {}
+        }
+
+        // ==========================================
+        // 3. STAGE NAVIGATION LOGIC
+        // ==========================================
+        let currentStage = 1;
+
+        function goToStage(stageNum) {
+            currentStage = stageNum;
+
+            // Hide all stages
+            document.querySelectorAll('.stage-panel').forEach(panel => {
+                panel.classList.remove('active', 'animate-pop-in');
+            });
+
+            // Show target stage
+            const target = document.getElementById('stage-' + stageNum);
+            if (target) {
+                target.classList.add('active', 'animate-pop-in');
+            }
+
+            // Update top step dots
+            for (let i = 1; i <= 4; i++) {
+                const dot = document.getElementById('dot-' + i);
+                if (!dot) continue;
+                if (i === stageNum) {
+                    dot.className = "w-7 h-7 rounded-full font-display font-bold text-xs bg-sunnyYellow text-slate-900 shadow-sm scale-110 transition cursor-pointer";
+                } else if (i < stageNum) {
+                    dot.className = "w-7 h-7 rounded-full font-display font-bold text-xs bg-mintBright text-white transition cursor-pointer";
+                } else {
+                    dot.className = "w-7 h-7 rounded-full font-display font-bold text-xs bg-slate-100 text-slate-500 transition cursor-pointer";
+                }
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Stage 1 -> Stage 2 Trigger (Starts Continuous Bday Song & Moves to Cake!)
+        function openSurprise() {
+            startBdayBackgroundMusic();
+            playClickChime();
+            goToStage(2);
+            resetCakeState();
+            launchFireworksShow(2);
+        }
+
+        // ==========================================
+        // 4. STAGE 2: CANDLE BLOW -> DARKNESS -> FIREWORKS
+        // ==========================================
+        let isBlowing = false;
+
+        function resetCakeState() {
+            isBlowing = false;
+            document.getElementById('cake-phase').classList.remove('hidden');
+            const revealPhase = document.getElementById('birthday-reveal-phase');
+            revealPhase.classList.add('hidden');
+            revealPhase.classList.remove('flex');
+
+            ['flame-group-1', 'flame-group-2', 'flame-group-3'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.style.display = 'block';
+            });
+            ['smoke-1', 'smoke-2', 'smoke-3'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.classList.add('hidden');
+                    el.classList.remove('smoke-puff');
+                }
+            });
+            const aura = document.getElementById('candle-aura');
+            if (aura) aura.style.display = 'block';
+        }
+
+        function blowCandlesSequence() {
+            if (isBlowing) return;
+            isBlowing = true;
+
+            // Ensure Bday music is playing if user clicked Stage 2 directly
+            if (!isMusicPlaying) {
+                startBdayBackgroundMusic();
+            }
+
+            // 1. Extinguish flames & show smoke puffs
+            ['flame-group-1', 'flame-group-2', 'flame-group-3'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.style.display = 'none';
+            });
+            const aura = document.getElementById('candle-aura');
+            if (aura) aura.style.display = 'none';
+
+            ['smoke-1', 'smoke-2', 'smoke-3'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.classList.remove('hidden');
+                    el.classList.add('smoke-puff');
+                }
+            });
+
+            // 2. Smoothly turn lights off (darkness)
+            const lightsOverlay = document.getElementById('lights-overlay');
+            setTimeout(() => {
+                lightsOverlay.classList.add('dark');
+            }, 320);
+
+            // 3. Turn lights back on with fireworks & Happy Birthday Nishika banner + photo
+            setTimeout(() => {
+                lightsOverlay.classList.remove('dark');
+                document.getElementById('cake-phase').classList.add('hidden');
+                const revealPhase = document.getElementById('birthday-reveal-phase');
+                revealPhase.classList.remove('hidden');
+                revealPhase.classList.add('flex');
+
+                launchFireworksShow(9);
+                isBlowing = false;
+            }, 1700);
+        }
+
+        // ==========================================
+        // 5. HTML5 CANVAS FIREWORKS & CONFETTI ENGINE
+        // ==========================================
+        const canvas = document.getElementById('fx-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const festiveColors = ['#FFD93D', '#4D96FF', '#9B5DE5', '#FF6B6B', '#6BCB77', '#FF9F1C', '#F15BB5', '#00BBF9'];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        function createFireworkExplosion(x, y) {
+            const count = 65;
+            const baseColor = festiveColors[Math.floor(Math.random() * festiveColors.length)];
+            const secondColor = festiveColors[Math.floor(Math.random() * festiveColors.length)];
+
+            for (let i = 0; i < count; i++) {
+                const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.2;
+                const speed = Math.random() * 7.5 + 2.5;
+                particles.push({
+                    x: x,
+                    y: y,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed,
+                    size: Math.random() * 4.5 + 2,
+                    color: i % 2 === 0 ? baseColor : secondColor,
+                    alpha: 1,
+                    decay: Math.random() * 0.015 + 0.012,
+                    gravity: 0.09,
+                    type: 'spark'
+                });
+            }
+
+            // Sprinkle confetti rectangles
+            for (let j = 0; j < 22; j++) {
+                particles.push({
+                    x: x,
+                    y: y,
+                    vx: (Math.random() - 0.5) * 10,
+                    vy: (Math.random() - 0.8) * 9,
+                    size: Math.random() * 8 + 5,
+                    color: festiveColors[Math.floor(Math.random() * festiveColors.length)],
+                    alpha: 1,
+                    decay: 0.008,
+                    gravity: 0.18,
+                    rotation: Math.random() * 360,
+                    rotSpeed: (Math.random() - 0.5) * 12,
+                    type: 'confetti'
+                });
+            }
+            playFireworkPop();
+        }
+
+        function launchFireworksShow(bursts) {
+            const total = bursts || 7;
+            for (let i = 0; i < total; i++) {
+                setTimeout(() => {
+                    const rx = window.innerWidth * (0.18 + Math.random() * 0.64);
+                    const ry = window.innerHeight * (0.16 + Math.random() * 0.42);
+                    createFireworkExplosion(rx, ry);
+                }, i * 320);
+            }
+        }
+
+        function renderParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                p.vy += p.gravity;
+                p.vx *= 0.97;
+                p.alpha -= p.decay;
+
+                if (p.alpha <= 0) {
+                    particles.splice(i, 1);
+                    continue;
+                }
+
+                ctx.save();
+                ctx.globalAlpha = p.alpha;
+                ctx.fillStyle = p.color;
+
+                if (p.type === 'confetti') {
+                    p.rotation += p.rotSpeed;
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate((p.rotation * Math.PI) / 180);
+                    ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.55);
+                } else {
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                ctx.restore();
+            }
+
+            requestAnimationFrame(renderParticles);
+        }
+        renderParticles();
+
+        // ==========================================
+        // 6. STAGE 3: INTERACTIVE CLICK-TO-FLIP PHOTO ALBUM
+        // ==========================================
+        let currentPhotoIndex = 0;
+
+        function renderAlbumPhoto(index) {
+            currentPhotoIndex = (index + albumPhotos.length) % albumPhotos.length;
+            const item = albumPhotos[currentPhotoIndex];
+
+            const card = document.getElementById('album-card');
+            const img = document.getElementById('album-img');
+            const caption = document.getElementById('album-caption');
+            const counter = document.getElementById('album-counter');
+
+            card.classList.remove('animate-album-flip');
+            void card.offsetWidth;
+            card.classList.add('animate-album-flip');
+
+            img.src = item.url;
+            caption.textContent = item.caption;
+            counter.textContent = 'Photo ' + (currentPhotoIndex + 1) + ' of ' + albumPhotos.length;
+
+            const dotsContainer = document.getElementById('album-dots');
+            dotsContainer.innerHTML = '';
+            albumPhotos.forEach((_, idx) => {
+                const dot = document.createElement('button');
+                dot.type = 'button';
+                dot.setAttribute('aria-label', 'Go to photo ' + (idx + 1));
+                dot.onclick = function (e) {
+                    e.stopPropagation();
+                    playClickChime();
+                    renderAlbumPhoto(idx);
+                };
+                dot.className = idx === currentPhotoIndex
+                    ? 'w-5 h-2.5 rounded-full bg-lavenderBright transition-all cursor-pointer'
+                    : 'w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-skyBright transition-all cursor-pointer';
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function nextAlbumPhoto() {
+            playClickChime();
+            renderAlbumPhoto(currentPhotoIndex + 1);
+        }
+
+        function prevAlbumPhoto() {
+            playClickChime();
+            renderAlbumPhoto(currentPhotoIndex - 1);
+        }
+
+        // ==========================================
+        // 7. STAGE 4: RENDER 10 SPECIAL WISHES
+        // ==========================================
+        function renderTenWishes() {
+            const grid = document.getElementById('wishes-grid');
+            if (!grid) return;
+
+            grid.innerHTML = tenWishes.map(w => `
+                <div class="border-2 ${w.bg} rounded-3xl p-5 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300 flex items-start gap-4">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-white shadow-sm flex flex-col items-center justify-center border border-slate-100">
+                        <span class="text-xl leading-none">${w.icon}</span>
+                        <span class="font-display font-bold text-[10px] text-slate-400 mt-0.5">#${w.num}</span>
+                    </div>
+                    <div>
+                        <h3 class="font-display font-bold text-lg text-slate-800">${w.title}</h3>
+                        <p class="text-slate-600 font-semibold text-sm leading-relaxed mt-1">${w.text}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Initialize Album & Wishes on load
+        window.addEventListener('load', () => {
+            renderAlbumPhoto(0);
+            renderTenWishes();
+        });
+    </script>
+</body>
+</html>
